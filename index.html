@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TEAMROHITOFFICAL45_LIVE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orion+Esperanto+Dika&display=swap" rel="stylesheet"> <!-- Orion Esperanto Dika font -->
+  <link href="https://fonts.googleapis.com/css2?family=Copperplate&display=swap" rel="stylesheet"> <!-- Copperplate font -->
+  <style>
+    html {
+      font-family: 'Orion Esperanto Dika', sans-serif; /* Updated font */
+      background: #000; /* Set background to black */
+      margin: 0;
+      padding: 0;
+      height: 100%; /* Ensure the html element takes full height */
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start; /* Align items to the top */
+      height: 100vh;
+      color: #DAA520; /* Dark yellow color */
+    }
+    #telegram-banner {
+      display: none; /* Initially hidden */
+      position: fixed;
+      top: 50%; /* Center vertically */
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center horizontally */
+      background: black; /* Black background */
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      z-index: 10000; /* Ensure the popup is above the player */
+      text-align: center;
+      width: 250px; /* Adjusted width */
+    }
+    #player {
+      width: 100%;
+      max-width: 800px; /* Set maximum width for the video player */
+      height: auto; /* Maintain aspect ratio */
+      margin-top: 80px; /* Maintain space below the popup */
+      border: 5px solid neon yellow; /* Solid border */
+      border-radius: 10px; /* Rounded corners for the border */
+      box-shadow: 0 0 20px 5px rgba(255, 255, 0, 0.7); /* Glowing effect */
+    }
+    .loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .loading-text {
+      text-align: center;
+      font-size: 24px;
+    }
+    #telegram-banner h2 {
+      color: white; /* White text for the title */
+      margin: 0 0 10px; /* Margin below the title */
+      font-family: 'Copperplate', sans-serif; /* Changed font for the popup text */
+      text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00; /* Glowing effect */
+      animation: glow 1.5s infinite alternate; /* Animation for glowing effect */
+    }
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00;
+      }
+      100% {
+        text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
+      }
+    }
+    #telegram-banner button {
+      background-color: green; /* Green for Join button */
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px; /* Rounded corners */
+      cursor: pointer;
+      margin: 5px;
+      width: 100px; /* Fixed width for buttons */
+    }
+    #telegram-banner .cancel-button {
+      background-color: red; /* Red for Cancel button */
+      border-radius: 5px; /* Rounded corners */
+    }
+    marquee {
+      background-color: darkgoldenrod; /* Dark yellow background */
+      color: black; /* Black text color */
+      width: 100%; /* Full width */
+      padding: 10px 0; /* Padding for better appearance */
+      font-family: Georgia, serif; /* Set font to Georgia */
+      font-weight: bold; /* Make text bold */
+      border-radius: 10px; /* Rounded corners */ 
+    }
+  </style>
+  <script src="https://cdn.jwplayer.com/libraries/IDzF9Zmk.js"></script> <!-- JW Player SDK -->
+</head>
+<body>
+  <div id="loading" class="loading">
+    <div class="loading-text">Loading CricHub...</div>
+  </div>
+<div id="telegram-banner">
+    <h2>Join TEAMROHITOFFICAL45 Telegram Channel</h2>
+    <button onclick="window.open('https://t.me/teamrohitlive77', '_blank')">Join</button>
+    <button class="cancel-button" onclick="document.getElementById('telegram-banner').style.display='none'">Cancel</button>
+  </div>
+
+  <div id="player"></div>
+
+  <marquee behavior="scroll" direction="left">
+    "JOIN TEAMROHITOFFICAL45 LIVE LINKS TELEGRAM CHANNEL FOR ALL SPORTS LIVE LINKS"🔗❤️
+  </marquee>
+
+  <script>
+    // Get the video URL from the query parameters
+    var urlParams = new URLSearchParams(window.location.search);
+    var maxvalue = urlParams.get("videoUrl");
+
+    // Set up the JW Player
+    var playerInstance = jwplayer("player").setup({
+      file: maxvalue || 'https://example.com/path/to/default/video.m3u8', // Default URL if none provided
+      width: "100%",
+      height: "auto",
+      primary: "html5",
+      // Adding quality options
+      sources: [
+        { file: maxvalue, label: "360p", type: "application/x-mpegURL" },
+        { file: maxvalue, label: "480p", type: "application/x-mpegURL" },
+        { file: maxvalue, label: "720p", type: "application/x-mpegURL" },
+        { file: maxvalue, label: "1080p", type: "application/x-mpegURL" },
+      ],
+      aspectratio: "16:9",
+      controls: true,
+      autostart: false,
+      stretching: "uniform",
+    });
+
+    // Hide loading screen and show the video player once loaded
+    playerInstance.on('ready', function() {
+      document.getElementById('loading').style.display = 'none';
+    });
+
+    // Show Telegram banner on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('telegram-banner').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
